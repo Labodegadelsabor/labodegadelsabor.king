@@ -3,46 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="La Bodega Del Sabor - Menú Minimalista">
+    <meta name="description" content="La Bodega Del Sabor - Menú Profesional">
     <title>La Bodega Del Sabor</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>La Bodega Del Sabor</h1>
+        <div class="logo">
+            <img src="logo.png" alt="Logo de La Bodega Del Sabor">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#menu">Menú</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-
     <section id="menu">
-        <h2>Menú</h2>
-        <ul class="menu-list">
-            <li>
-                <span>Sándwich de Milanesa</span>
-                <span>$500</span>
-            </li>
-            <li>
-                <span>Sándwich de Jamón y Queso</span>
-                <span>$350</span>
-            </li>
-            <li>
-                <span>Gaseosa 500ml</span>
-                <span>$150</span>
-            </li>
-            <li>
-                <span>Agua Mineral</span>
-                <span>$100</span>
-            </li>
-            <li>
-                <span>Combo Milanesa + Bebida</span>
-                <span>$600</span>
-            </li>
-        </ul>
+        <h2>Nuestro Menú</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="milanesa.jpg" alt="Sándwich de Milanesa">
+                <h3>Sándwich de Milanesa</h3>
+                <p>Clásico sándwich de milanesa con mayonesa casera, lechuga y tomate.</p>
+                <p class="price">$500</p>
+            </div>
+            <div class="menu-item">
+                <img src="jamon_queso.jpg" alt="Sándwich de Jamón y Queso">
+                <h3>Sándwich de Jamón y Queso</h3>
+                <p>Jamón y queso fundido en pan fresco. Perfecto para cualquier ocasión.</p>
+                <p class="price">$350</p>
+            </div>
+            <div class="menu-item">
+                <img src="gaseosa.jpg" alt="Gaseosa 500ml">
+                <h3>Gaseosa 500ml</h3>
+                <p>Disfruta de una bebida refrescante para acompañar tu comida.</p>
+                <p class="price">$150</p>
+            </div>
+            <div class="menu-item">
+                <img src="agua.jpg" alt="Agua Mineral">
+                <h3>Agua Mineral</h3>
+                <p>Agua pura y natural, ideal para cualquier momento del día.</p>
+                <p class="price">$100</p>
+            </div>
+            <div class="menu-item">
+                <img src="combo.jpg" alt="Combo Milanesa + Bebida">
+                <h3>Combo Milanesa + Bebida</h3>
+                <p>Sándwich de milanesa más tu bebida favorita a un precio especial.</p>
+                <p class="price">$600</p>
+            </div>
+        </div>
     </section>
 
     <section id="contacto">
