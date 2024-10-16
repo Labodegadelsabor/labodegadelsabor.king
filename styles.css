@@ -101,3 +101,10 @@ footer {
     bottom: 0;
     width: 100%;
 }
+a {
+    text-decoration: none; /* Esto elimina el subrayado de todos los enlaces */
+}
+
+a:hover {
+    text-decoration: underline; /* Si deseas que el subrayado aparezca al pasar el mouse, puedes agregar este estilo opcional */
+}
