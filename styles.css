@@ -20,7 +20,7 @@ header .logo img {
 }
 
 nav a {
-    color: white !important; /* Esto forzará que el color sea blanco */
+    color: white !important; 
     text-decoration: none;
 }
 
