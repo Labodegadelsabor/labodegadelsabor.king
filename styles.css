@@ -1,3 +1,7 @@
+a {
+    text-decoration: none; /* Esto elimina el subrayado de todos los enlaces */
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
     background-color: #f5f5f5;
@@ -100,11 +104,4 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-}
-a {
-    text-decoration: none; /* Esto elimina el subrayado de todos los enlaces */
-}
-
-a:hover {
-    text-decoration: underline; /* Si deseas que el subrayado aparezca al pasar el mouse, puedes agregar este estilo opcional */
 }
