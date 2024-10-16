@@ -19,6 +19,11 @@ header .logo img {
     height: 60px;
 }
 
+nav a {
+    color: white !important; /* Esto forzará que el color sea blanco */
+    text-decoration: none;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
