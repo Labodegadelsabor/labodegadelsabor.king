@@ -19,10 +19,6 @@ header .logo img {
     height: 60px;
 }
 
-nav a {
-    color: white; 
-}
-
 nav ul {
     list-style: none;
     margin: 0;
@@ -35,8 +31,8 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
-    text-decoration: none;
+    color: white !important; /* Forza el color a blanco */
+    text-decoration: none; /* Opcional: quita el subrayado */
     font-size: 1.2em;
 }
 
