@@ -36,8 +36,8 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white !important; /* Forza el color a blanco */
-    text-decoration: none; /* Opcional: quita el subrayado */
+    color: white !important; 
+    text-decoration: none; 
     font-size: 1.2em;
 }
 
