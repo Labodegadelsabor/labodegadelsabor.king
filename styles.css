@@ -111,3 +111,19 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Estilos para la sección de contacto */
+.contact-section h3 {
+    font-size: 2em; /* Tamaño aumentado */
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-size: 1.2em; /* Aumentado */
+    color: #333; /* Color del texto */
+}
+
+.contact-section a {
+    color: #e74c3c; /* Color para el teléfono y email */
+    text-decoration: underline; /* Para destacarlos */
+}
