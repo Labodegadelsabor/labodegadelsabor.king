@@ -47,7 +47,7 @@ section {
 }
 
 a {
-    color: white !important; /* Mantén esto para enlaces generales */
+    color: white !important;
     text-decoration: none; 
 }
 
@@ -120,15 +120,10 @@ footer {
 
 .contact-section p {
     font-size: 1.2em; /* Aumentado */
-    color: #333; /* Color del texto normal */
+    color: #333; /* Color del texto */
 }
 
 .contact-section a {
     color: #e74c3c; /* Color para el teléfono y email */
     text-decoration: underline; /* Para destacarlos */
-}
-
-/* Asegurarse de que los párrafos de contacto no sean blancos */
-.contact-section p {
-    color: #333; /* Color del texto normal */
 }
