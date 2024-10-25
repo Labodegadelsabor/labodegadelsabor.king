@@ -172,6 +172,28 @@ footer {
     display: block;
 }
 
+#finalize-order {
+    background-color: #28a745; /* Color verde para indicar acción positiva */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#finalize-order:hover {
+    background-color: #218838; /* Más oscuro en hover */
+    transform: scale(1.05);
+}
+
+#finalize-order:active {
+    background-color: #1e7e34;
+    transform: scale(1);
+}
+
 /* Efecto de animación al actualizar el total */
 @keyframes highlight {
     0% { color: #ff6600; transform: scale(1); }
@@ -199,4 +221,9 @@ footer {
 .add-to-order:hover {
     background-color: #ff4500;
     transform: scale(1.05);
+}
+
+.add-to-order:active {
+    background-color: #e04e00; /* Color cuando está presionado */
+    transform: scale(1); /* Retorna al tamaño original */
 }
