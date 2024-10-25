@@ -36,12 +36,36 @@
 
         // Mostrar los datos del pedido
         function displayOrderDetails() {
-            const orderDetails = document.getElementById('order-details');
-            const orderTotalDisplay = document.getElementById('order-total');
-            let orderTotal = 0;
+    const orderDetails = document.getElementById('order-details');
+    const orderTotalDisplay = document.getElementById('order-total');
 
-            // Limpiar la lista antes de agregar los elementos
-            orderDetails.innerHTML = '';
+    // Limpiar la lista de pedidos antes de mostrar los nuevos
+    orderDetails.innerHTML = '';
+
+    orderItems.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            ${item.name} - $${item.price}
+            <span class="remove-item" onclick="removeItem(${index})">&times;</span>
+        `;
+        orderDetails.appendChild(listItem);
+    });
+
+    // Calcular y mostrar el total
+    const total = orderItems.reduce((acc, item) => acc + item.price, 0);
+    orderTotalDisplay.textContent = `Total: $${total}`;
+}
+
+function removeItem(index) {
+    // Eliminar el item del array
+    orderItems.splice(index, 1);
+    
+    // Actualizar el sessionStorage
+    sessionStorage.setItem('orderItems', JSON.stringify(orderItems));
+
+    // Volver a mostrar los detalles del pedido
+    displayOrderDetails();
+}
 
             // Verificar si hay elementos en el pedido
             if (orderItems.length === 0) {
