@@ -200,10 +200,17 @@ ul {
 
 ul li {
     list-style-type: none; /* Eliminar los puntos de la lista */
-    display: flex; /* Usar flexbox para alinear texto y botón */
-    justify-content: space-between; /* Espaciado entre el texto y el botón */
+    display: flex; /* Usar flexbox para alinear texto y icono */
+    justify-content: space-between; /* Espaciado entre el texto y el icono */
     align-items: center; /* Alinear verticalmente */
     margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+}
+
+.remove-item {
+    cursor: pointer; /* Cambiar el cursor al pasar sobre la X */
+    color: red; /* Color rojo para la X */
+    font-size: 1.5em; /* Tamaño de la X */
+    margin-left: 20px; /* Espacio entre el texto y la X */
 }
 
 ul li button {
