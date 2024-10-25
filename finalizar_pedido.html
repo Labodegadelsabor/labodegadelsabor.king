@@ -32,25 +32,25 @@
     </footer>
 
     <script>
+        // Cargar los datos del pedido desde sessionStorage
+        const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
+        const orderTotal = sessionStorage.getItem('orderTotal') || 0;
+        // Mostrar los datos del pedido
         function displayOrderDetails() {
-    const orderDetails = document.getElementById('order-details');
-    const orderTotalDisplay = document.getElementById('order-total');
-
-    // Limpiar la lista antes de agregar los elementos
-    orderDetails.innerHTML = '';
-
-    // Si no hay elementos en el pedido, mostrar un mensaje
-    if (orderItems.length === 0) {
-        const listItem = document.createElement('li');
-        listItem.textContent = "No hay productos en tu pedido.";
-        orderDetails.appendChild(listItem);
-    } else {
-        orderItems.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${item.name} - $${item.price}`;
-            orderDetails.appendChild(listItem);
-        });
-    }
+            const orderDetails = document.getElementById('order-details');
+            const orderTotalDisplay = document.getElementById('order-total');
+             // Si no hay elementos en el pedido, mostrar un mensaje
+            if (orderItems.length === 0) {
+                const listItem = document.createElement('li');
+                listItem.textContent = "No hay productos en tu pedido.";
+                orderDetails.appendChild(listItem);
+            } else {
+                orderItems.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.name} - $${item.price}`;
+                    orderDetails.appendChild(listItem);
+                });
+            }
 
     orderTotalDisplay.textContent = `Total: $${orderTotal}`;
 }
