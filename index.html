@@ -242,26 +242,32 @@
     <script>
     let total = 0; // Total inicial
 
-    // Función para actualizar el total
-    function updateTotal(amount) {
-        total += amount;
-        document.getElementById('order-total').textContent = $${total};
-    }
+        // Función para actualizar el total
+        function updateTotal(amount) {
+            total += amount;
+            const orderTotal = document.getElementById('order-total');
+            orderTotal.textContent = `$${total}`;
+            
+            // Agrega y remueve la clase highlight para la animación
+            orderTotal.classList.add('highlight');
+            setTimeout(() => {
+                orderTotal.classList.remove('highlight');
+            }, 500); // Duración de la animación
+        }
 
-    // Escuchar clics en todos los botones de "Agregar al pedido"
-    document.querySelectorAll('.add-to-order').forEach(button => {
-        button.addEventListener('click', function() {
-            const price = parseInt(this.getAttribute('data-price')); // Obtener el precio del producto
-            updateTotal(price); // Actualizar el total
+        // Escuchar clics en todos los botones de "Agregar al pedido"
+        document.querySelectorAll('.add-to-order').forEach(button => {
+            button.addEventListener('click', function() {
+                const price = parseInt(this.getAttribute('data-price')); // Obtener el precio del producto
+                updateTotal(price); // Actualizar el total
+            });
         });
-    });
 
-    // Finalizar pedido (redirigir a otra página o mostrar resumen)
-    document.getElementById('finalize-order').addEventListener('click', function() {
-        alert(El total de tu pedido es $${total}. Redirigiendo a la página de finalización...);
-        // Aquí puedes redirigir a otra página para finalizar el pedido
-        window.location.href = "finalizar_pedido.html"; // Redirige a la página de finalización
-    });
+        // Finalizar pedido (redirigir a otra página o mostrar resumen)
+        document.getElementById('finalize-order').addEventListener('click', function() {
+            alert(`El total de tu pedido es $${total}. Redirigiendo a la página de finalización...`);
+            window.location.href = "finalizar_pedido.html"; // Redirige a la página de finalización
+        });
 </script>
 </body>
 </html>
