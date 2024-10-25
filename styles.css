@@ -204,6 +204,7 @@ ul li {
     justify-content: space-between; /* Espaciado entre el texto y el icono */
     align-items: center; /* Alinear verticalmente */
     margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+    text-align: center; /* Centrar el texto */
 }
 
 .remove-item {
