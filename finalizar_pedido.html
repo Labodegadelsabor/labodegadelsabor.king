@@ -15,8 +15,12 @@
         <p>Gracias por realizar tu pedido. Por favor, revisa los detalles y confirma para finalizar.</p>
         <ul id="order-details"></ul>
         <p id="order-total"></p>
-        <button onclick="confirmOrder()">Confirmar Pedido</button>
+        <button id="confirm-btn">Confirmar Pedido</button>
     </section>
+
+    <footer>
+        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </footer>
 
     <script>
         // Cargar los datos del pedido desde sessionStorage
@@ -28,11 +32,18 @@
             const orderDetails = document.getElementById('order-details');
             const orderTotalDisplay = document.getElementById('order-total');
 
-            orderItems.forEach(item => {
+            // Si no hay elementos en el pedido, mostrar un mensaje
+            if (orderItems.length === 0) {
                 const listItem = document.createElement('li');
-                listItem.textContent = `${item.name} - $${item.price}`;
+                listItem.textContent = "No hay productos en tu pedido.";
                 orderDetails.appendChild(listItem);
-            });
+            } else {
+                orderItems.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.name} - $${item.price}`;
+                    orderDetails.appendChild(listItem);
+                });
+            }
 
             orderTotalDisplay.textContent = `Total: $${orderTotal}`;
         }
@@ -45,6 +56,9 @@
 
         // Llamar a la función para mostrar el pedido
         displayOrderDetails();
+
+        // Agregar evento al botón
+        document.getElementById('confirm-btn').addEventListener('click', confirmOrder);
     </script>
 </body>
 </html>
