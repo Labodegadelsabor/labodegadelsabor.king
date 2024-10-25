@@ -268,31 +268,6 @@
             alert(`El total de tu pedido es $${total}. Redirigiendo a la página de finalización...`);
             window.location.href = "finalizar_pedido.html"; // Redirige a la página de finalización
         });
-        // Actualizar el total y guardar los items en sessionStorage cada vez que cambie
-function updateOrderInStorage() {
-    sessionStorage.setItem('orderItems', JSON.stringify(orderItems));
-    sessionStorage.setItem('orderTotal', total);
-}
-
-function addItemToOrder(name, price) {
-    if (!name || isNaN(price)) return;
-
-    const item = { name, price };
-    orderItems.push(item);
-    total += price;
-    updateTotal();
-    renderOrderItems();
-    updateOrderInStorage(); // Actualizar el almacenamiento
-}
-
-function removeItemFromOrder(index) {
-    const removedItem = orderItems.splice(index, 1)[0];
-    total -= removedItem.price;
-    updateTotal();
-    renderOrderItems();
-    updateOrderInStorage(); // Actualizar el almacenamiento
-}
-
 </script>
 </body>
 </html>
