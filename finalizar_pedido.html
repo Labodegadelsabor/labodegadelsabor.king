@@ -32,16 +32,19 @@
     </footer>
 
     <script>
-        // Cargar los datos del pedido desde sessionStorage
+       // Cargar los datos del pedido desde sessionStorage
         const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
         const orderTotal = sessionStorage.getItem('orderTotal') || 0;
-        
+
         // Mostrar los datos del pedido
         function displayOrderDetails() {
             const orderDetails = document.getElementById('order-details');
             const orderTotalDisplay = document.getElementById('order-total');
-             
-            // Si no hay elementos en el pedido, mostrar un mensaje
+
+            // Limpiar la lista antes de agregar los elementos
+            orderDetails.innerHTML = '';
+
+            // Verificar si hay elementos en el pedido
             if (orderItems.length === 0) {
                 const listItem = document.createElement('li');
                 listItem.textContent = "No hay productos en tu pedido.";
@@ -54,10 +57,6 @@
                 });
             }
 
-    orderTotalDisplay.textContent = `Total: $${orderTotal}`;
-}
-
-
             orderTotalDisplay.textContent = `Total: $${orderTotal}`;
         }
 
@@ -69,9 +68,6 @@
 
         // Llamar a la función para mostrar el pedido
         displayOrderDetails();
-
-        // Agregar evento al botón
-        document.getElementById('confirm-btn').addEventListener('click', confirmOrder);
     </script>
 </body>
 </html>
