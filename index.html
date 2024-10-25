@@ -234,7 +234,6 @@
     <div id="order-bar">
         <div id="order-summary">
             <p>Total del Pedido: <span id="order-total">$0</span></p>
-            <button id="finalize-order">Finalizar Pedido</button>
         </div>
         <div id="order-details">
             <ul id="order-items"></ul>
@@ -250,12 +249,7 @@
         let orderItems = [];
 
         function updateTotal() {
-            const orderTotal = document.getElementById('order-total');
-            orderTotal.textContent = `$${total}`;
-            orderTotal.classList.add('highlight');
-            setTimeout(() => {
-                orderTotal.classList.remove('highlight');
-            }, 500);
+            document.getElementById('order-total').textContent = `$${total}`;
         }
 
         function addItemToOrder(name, price) {
@@ -303,11 +297,6 @@
         const orderBar = document.getElementById('order-bar');
         orderBar.addEventListener('click', function() {
             orderBar.classList.toggle('expanded');
-        });
-
-        document.getElementById('finalize-order').addEventListener('click', function() {
-            alert(`El total de tu pedido es $${total}. Redirigiendo a la página de finalización...`);
-            window.location.href = "finalizar_pedido.html";
         });
 </script>
 </body>
