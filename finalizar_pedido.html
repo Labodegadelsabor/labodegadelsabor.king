@@ -8,31 +8,22 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="logo.png" alt="Logo de La Bodega del Sabor" style="height: 30px; margin-right: 10px;">
-            <span style="color: white; font-size: 20px;">La Bodega del Sabor</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Volver al Menu</a></li>
-            </ul>
-        </nav>
+        <h1>Finalizar Pedido</h1>
     </header>
 
     <section>
-        <h2>MI PEDIDO</h2>
         <p>Gracias por realizar tu pedido. Por favor, revisa los detalles y confirma para finalizar.</p>
         <ul id="order-details"></ul>
         <p id="order-total"></p>
-        <button id="confirm-btn">Confirmar Pedido</button>
+        <button onclick="confirmOrder()">Confirmar Pedido</button>
     </section>
 
     <footer>
-        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Todos los derechos reservados</p>
     </footer>
 
     <script>
-       // Cargar los datos del pedido desde sessionStorage
+        // Cargar los datos del pedido desde sessionStorage
         const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
         const orderTotal = sessionStorage.getItem('orderTotal') || 0;
 
@@ -50,14 +41,29 @@
                 listItem.textContent = "No hay productos en tu pedido.";
                 orderDetails.appendChild(listItem);
             } else {
-                orderItems.forEach(item => {
+                orderItems.forEach((item, index) => {
                     const listItem = document.createElement('li');
                     listItem.textContent = `${item.name} - $${item.price}`;
+                    
+                    // Crear botón de eliminar
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Eliminar';
+                    removeButton.onclick = () => removeItem(index);
+                    listItem.appendChild(removeButton);
+                    
                     orderDetails.appendChild(listItem);
                 });
             }
 
             orderTotalDisplay.textContent = `Total: $${orderTotal}`;
+        }
+
+        // Función para eliminar un producto
+        function removeItem(index) {
+            const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
+            orderItems.splice(index, 1); // Eliminar el elemento del índice
+            sessionStorage.setItem('orderItems', JSON.stringify(orderItems)); // Actualizar sessionStorage
+            displayOrderDetails(); // Volver a mostrar los detalles del pedido
         }
 
         function confirmOrder() {
