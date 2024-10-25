@@ -94,20 +94,6 @@ function removeItem(index) {
             orderTotalDisplay.textContent = `Total: $${orderTotal.toFixed(2)}`;
         }
 
-        // Función para eliminar un producto
-        function removeItem(index) {
-            const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
-            orderItems.splice(index, 1); // Eliminar el elemento del índice
-            sessionStorage.setItem('orderItems', JSON.stringify(orderItems)); // Actualizar sessionStorage
-            displayOrderDetails(); // Volver a mostrar los detalles del pedido
-        }
-
-        function confirmOrder() {
-            alert('Tu pedido ha sido confirmado. ¡Gracias!');
-            sessionStorage.clear(); // Limpia el pedido almacenado
-            window.location.href = "index.html"; // Redirigir a la página principal
-        }
-
         // Llamar a la función para mostrar el pedido
         displayOrderDetails();
     </script>
