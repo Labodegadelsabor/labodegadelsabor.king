@@ -244,9 +244,16 @@
 
     // Función para actualizar el total
     function updateTotal(amount) {
-        total += amount;
-        document.getElementById('order-total').textContent = `$${total}`;
-    }
+    total += amount;
+    const orderTotal = document.getElementById('order-total');
+    orderTotal.textContent = `$${total}`;
+    
+    // Agrega y remueve la clase highlight para la animación
+    orderTotal.classList.add('highlight');
+    setTimeout(() => {
+        orderTotal.classList.remove('highlight');
+    }, 500); // Duración de la animación
+}
 
     // Escuchar clics en todos los botones de "Agregar al pedido"
     document.querySelectorAll('.add-to-order').forEach(button => {
