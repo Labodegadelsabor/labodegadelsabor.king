@@ -268,6 +268,34 @@
             alert(`El total de tu pedido es $${total}. Redirigiendo a la página de finalización...`);
             window.location.href = "finalizar_pedido.html"; // Redirige a la página de finalización
         });
+        
+         // Función para agregar productos al pedido
+        function addToOrder(item) {
+            // Obtener los elementos existentes del pedido
+            const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
+
+            // Agregar el nuevo elemento al pedido
+            orderItems.push(item);
+
+            // Guardar nuevamente el pedido en sessionStorage
+            sessionStorage.setItem('orderItems', JSON.stringify(orderItems));
+
+            // Calcular y guardar el total
+            const orderTotal = orderItems.reduce((sum, currentItem) => sum + currentItem.price, 0);
+            sessionStorage.setItem('orderTotal', orderTotal);
+        }
+
+        // Agregar eventos a los botones de agregar al pedido
+        document.querySelectorAll('.add-to-order').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const item = {
+                    name: button.parentElement.querySelector('h3').textContent,
+                    price: parseFloat(button.parentElement.querySelector('.price').textContent.replace('$', ''))
+                };
+                addToOrder(item);
+                alert(`${item.name} ha sido agregado al pedido.`);
+            });
+        });
 </script>
 </body>
 </html>
