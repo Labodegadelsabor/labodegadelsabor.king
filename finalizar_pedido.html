@@ -13,15 +13,38 @@
 
     <section>
         <p>Gracias por realizar tu pedido. Por favor, revisa los detalles y confirma para finalizar.</p>
-        <!-- Aquí puedes mostrar los detalles del pedido -->
+        <ul id="order-details"></ul>
+        <p id="order-total"></p>
         <button onclick="confirmOrder()">Confirmar Pedido</button>
     </section>
 
     <script>
+        // Cargar los datos del pedido desde sessionStorage
+        const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
+        const orderTotal = sessionStorage.getItem('orderTotal') || 0;
+
+        // Mostrar los datos del pedido
+        function displayOrderDetails() {
+            const orderDetails = document.getElementById('order-details');
+            const orderTotalDisplay = document.getElementById('order-total');
+
+            orderItems.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - $${item.price}`;
+                orderDetails.appendChild(listItem);
+            });
+
+            orderTotalDisplay.textContent = `Total: $${orderTotal}`;
+        }
+
         function confirmOrder() {
             alert('Tu pedido ha sido confirmado. ¡Gracias!');
-            // Aquí puedes enviar la orden a través de una API, WhatsApp, etc.
+            sessionStorage.clear(); // Limpia el pedido almacenado
+            window.location.href = "index.html"; // Redirigir a la página principal
         }
+
+        // Llamar a la función para mostrar el pedido
+        displayOrderDetails();
     </script>
 </body>
 </html>
