@@ -230,74 +230,38 @@
         <p>Email: <a href="mailto:labodegadelsabor.king@gmail.com">labodegadelsabor.king@gmail.com</a></p>
     </section>
     
-    <!-- Cuadro de resumen de pedido -->
     <div id="order-bar">
-        <div id="order-summary">
-            <p>Total del Pedido: <span id="order-total">$0</span></p>
-        </div>
-        <div id="order-details">
-            <ul id="order-items"></ul>
-        </div>
-    </div>
+    <p>Total del Pedido: <span id="order-total">$0</span></p>
+    <button id="finalize-order">Finalizar Pedido</button>
+</div>
 
     <footer>
         <p>&copy; 2024 La Bodega Del Sabor</p>
     </footer>
 
     <script>
-    let total = 0;
-        let orderItems = [];
+    let total = 0; // Total inicial
 
-        function updateTotal() {
-            document.getElementById('order-total').textContent = `$${total}`;
-        }
+    // Función para actualizar el total
+    function updateTotal(amount) {
+        total += amount;
+        document.getElementById('order-total').textContent = $${total};
+    }
 
-        function addItemToOrder(name, price) {
-            const item = { name, price };
-            orderItems.push(item);
-            total += price;
-            updateTotal();
-            renderOrderItems();
-        }
-
-        function renderOrderItems() {
-            const orderList = document.getElementById('order-items');
-            orderList.innerHTML = '';
-            orderItems.forEach((item, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${item.name} - $${item.price}`;
-                
-                const removeButton = document.createElement('button');
-                removeButton.textContent = 'Eliminar';
-                removeButton.className = 'remove-item';
-                removeButton.addEventListener('click', () => {
-                    removeItemFromOrder(index);
-                });
-
-                listItem.appendChild(removeButton);
-                orderList.appendChild(listItem);
-            });
-        }
-
-        function removeItemFromOrder(index) {
-            const removedItem = orderItems.splice(index, 1)[0];
-            total -= removedItem.price;
-            updateTotal();
-            renderOrderItems();
-        }
-
-        document.querySelectorAll('.add-to-order').forEach(button => {
-            button.addEventListener('click', function() {
-                const name = this.getAttribute('data-name');
-                const price = parseInt(this.getAttribute('data-price'));
-                addItemToOrder(name, price);
-            });
+    // Escuchar clics en todos los botones de "Agregar al pedido"
+    document.querySelectorAll('.add-to-order').forEach(button => {
+        button.addEventListener('click', function() {
+            const price = parseInt(this.getAttribute('data-price')); // Obtener el precio del producto
+            updateTotal(price); // Actualizar el total
         });
+    });
 
-        const orderBar = document.getElementById('order-bar');
-        orderBar.addEventListener('click', function() {
-            orderBar.classList.toggle('expanded');
-        });
+    // Finalizar pedido (redirigir a otra página o mostrar resumen)
+    document.getElementById('finalize-order').addEventListener('click', function() {
+        alert(El total de tu pedido es $${total}. Redirigiendo a la página de finalización...);
+        // Aquí puedes redirigir a otra página para finalizar el pedido
+        window.location.href = "finalizar_pedido.html"; // Redirige a la página de finalización
+    });
 </script>
 </body>
 </html>
