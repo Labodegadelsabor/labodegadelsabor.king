@@ -25,12 +25,12 @@
     <script>
         // Cargar los datos del pedido desde sessionStorage
         const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
-        const orderTotal = sessionStorage.getItem('orderTotal') || 0;
 
         // Mostrar los datos del pedido
         function displayOrderDetails() {
             const orderDetails = document.getElementById('order-details');
             const orderTotalDisplay = document.getElementById('order-total');
+            let orderTotal = 0;
 
             // Limpiar la lista antes de agregar los elementos
             orderDetails.innerHTML = '';
@@ -45,17 +45,21 @@
                     const listItem = document.createElement('li');
                     listItem.textContent = `${item.name} - $${item.price}`;
                     
-                    // Crear botón de eliminar
-                    const removeButton = document.createElement('button');
-                    removeButton.textContent = 'Eliminar';
-                    removeButton.onclick = () => removeItem(index);
-                    listItem.appendChild(removeButton);
+                    // Crear ícono de eliminar
+                    const removeIcon = document.createElement('span');
+                    removeIcon.textContent = '❌'; // X roja
+                    removeIcon.className = 'remove-item';
+                    removeIcon.onclick = () => removeItem(index);
+                    listItem.appendChild(removeIcon);
                     
                     orderDetails.appendChild(listItem);
+
+                    // Sumar al total
+                    orderTotal += parseFloat(item.price);
                 });
             }
 
-            orderTotalDisplay.textContent = `Total: $${orderTotal}`;
+            orderTotalDisplay.textContent = `Total: $${orderTotal.toFixed(2)}`;
         }
 
         // Función para eliminar un producto
