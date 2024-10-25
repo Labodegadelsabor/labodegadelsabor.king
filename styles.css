@@ -193,3 +193,29 @@ footer {
     background-color: #e04e00; /* Color cuando está presionado */
     transform: scale(1); /* Retorna al tamaño original */
 }
+
+ul {
+    padding-left: 0; /* Eliminar el margen izquierdo de la lista */
+}
+
+ul li {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    display: flex; /* Usar flexbox para alinear texto y botón */
+    justify-content: space-between; /* Espaciado entre el texto y el botón */
+    align-items: center; /* Alinear verticalmente */
+    margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+}
+
+ul li button {
+    background-color: #e74c3c; /* Color rojo para el botón de eliminar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul li button:hover {
+    background-color: #c0392b; /* Color más oscuro al pasar el mouse */
+}
+
