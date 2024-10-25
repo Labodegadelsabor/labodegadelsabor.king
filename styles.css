@@ -116,29 +116,34 @@ footer {
     width: 100%;
 }
 
+/* Estilo para el cuadro de resumen de pedido */
 #order-bar {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333; /* Fondo oscuro */
-    color: #fff; /* Texto claro */
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    z-index: 1000;
+    transition: height 0.3s ease;
+    cursor: pointer;
+}
+
+#order-summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    font-size: 16px;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
 }
 
 #order-total {
     font-weight: bold;
     font-size: 18px;
-    color: #ff6600; /* Color llamativo */
+    color: #ff6600;
 }
 
 #finalize-order {
-    background-color: #28a745; /* Color verde para indicar acción positiva */
+    background-color: #28a745;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -150,7 +155,7 @@ footer {
 }
 
 #finalize-order:hover {
-    background-color: #218838; /* Más oscuro en hover */
+    background-color: #218838;
     transform: scale(1.05);
 }
 
@@ -159,8 +164,49 @@ footer {
     transform: scale(1);
 }
 
+#order-details {
+    display: none;
+    padding: 10px 20px;
+}
+
+#order-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.remove-item {
+    margin-left: 10px;
+    background: #ff4500;
+    border: none;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#order-bar.expanded {
+    height: 300px;
+    cursor: default;
+}
+
+#order-bar.expanded #order-details {
+    display: block;
+}
+
+/* Efecto de animación al actualizar el total */
+@keyframes highlight {
+    0% { color: #ff6600; transform: scale(1); }
+    50% { color: #ffcc00; transform: scale(1.1); }
+    100% { color: #ff6600; transform: scale(1); }
+}
+
+.highlight {
+    animation: highlight 0.5s ease;
+}
+/* Estilo para el botón de agregar al pedido */
 .add-to-order {
-    background-color: #ff6600; /* Color atractivo y llamativo */
+    background-color: #ff6600;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -172,11 +218,11 @@ footer {
 }
 
 .add-to-order:hover {
-    background-color: #ff4500; /* Color de hover */
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    background-color: #ff4500;
+    transform: scale(1.05);
 }
 
 .add-to-order:active {
-    background-color: #e04e00; /* Color cuando está presionado */
-    transform: scale(1); /* Retorna al tamaño original */
+    background-color: #e04e00;
+    transform: scale(1);
 }
