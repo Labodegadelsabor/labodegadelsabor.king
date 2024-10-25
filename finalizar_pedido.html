@@ -31,50 +31,42 @@
     </footer>
 
     <script>
-         // Cargar los datos del pedido desde sessionStorage
+        <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Finalizar Pedido</h1>
+    </header>
+
+    <section>
+        <p>Gracias por realizar tu pedido. Por favor, revisa los detalles y confirma para finalizar.</p>
+        <ul id="order-details"></ul>
+        <p id="order-total"></p>
+        <button onclick="confirmOrder()">Confirmar Pedido</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Cargar los datos del pedido desde sessionStorage
         const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
+        const orderTotal = sessionStorage.getItem('orderTotal') || 0;
 
         // Mostrar los datos del pedido
         function displayOrderDetails() {
             const orderDetails = document.getElementById('order-details');
             const orderTotalDisplay = document.getElementById('order-total');
 
-            // Limpiar la lista de pedidos antes de mostrar los nuevos
+            // Limpiar la lista antes de agregar los elementos
             orderDetails.innerHTML = '';
-
-            orderItems.forEach((item, index) => {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    ${item.name} - $${item.price}
-                    <span class="remove-item" onclick="removeItem(${index})">&times;</span>
-                `;
-                orderDetails.appendChild(listItem);
-            });
-
-            // Calcular y mostrar el total
-            const total = orderItems.reduce((acc, item) => acc + item.price, 0);
-            orderTotalDisplay.textContent = `Total: $${total}`;
-        }
-
-        function removeItem(index) {
-            // Eliminar el item del array
-            orderItems.splice(index, 1);
-            
-            // Actualizar el sessionStorage
-            sessionStorage.setItem('orderItems', JSON.stringify(orderItems));
-
-            // Volver a mostrar los detalles del pedido
-            displayOrderDetails();
-        }
-
-        function confirmOrder() {
-            alert('Tu pedido ha sido confirmado. ¡Gracias!');
-            sessionStorage.clear(); // Limpia el pedido almacenado
-            window.location.href = "index.html"; // Redirigir a la página principal
-        }
-
-        // Llamar a la función para mostrar el pedido
-        displayOrderDetails();
 
             // Verificar si hay elementos en el pedido
             if (orderItems.length === 0) {
@@ -86,21 +78,31 @@
                     const listItem = document.createElement('li');
                     listItem.textContent = `${item.name} - $${item.price}`;
                     
-                    // Crear ícono de eliminar
-                    const removeIcon = document.createElement('span');
-                    removeIcon.textContent = '❌'; // X roja
-                    removeIcon.className = 'remove-item';
-                    removeIcon.onclick = () => removeItem(index);
-                    listItem.appendChild(removeIcon);
+                    // Crear botón de eliminar
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Eliminar';
+                    removeButton.onclick = () => removeItem(index);
+                    listItem.appendChild(removeButton);
                     
                     orderDetails.appendChild(listItem);
-
-                    // Sumar al total
-                    orderTotal += parseFloat(item.price);
                 });
             }
 
-            orderTotalDisplay.textContent = `Total: $${orderTotal.toFixed(2)}`;
+            orderTotalDisplay.textContent = `Total: $${orderTotal}`;
+        }
+
+        // Función para eliminar un producto
+        function removeItem(index) {
+            const orderItems = JSON.parse(sessionStorage.getItem('orderItems')) || [];
+            orderItems.splice(index, 1); // Eliminar el elemento del índice
+            sessionStorage.setItem('orderItems', JSON.stringify(orderItems)); // Actualizar sessionStorage
+            displayOrderDetails(); // Volver a mostrar los detalles del pedido
+        }
+
+        function confirmOrder() {
+            alert('Tu pedido ha sido confirmado. ¡Gracias!');
+            sessionStorage.clear(); // Limpia el pedido almacenado
+            window.location.href = "index.html"; // Redirigir a la página principal
         }
 
         // Llamar a la función para mostrar el pedido
